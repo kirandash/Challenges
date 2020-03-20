@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>
+            001 Length of a Nested Array
+        </title>
+    </head>
+    <body>
+        <h1>Length of a Nested Array</h1>
+        <h3>
+            Create a function which will calculate the length of a Nested Array
+            <br>
+            Ex: 
+            <pre>
+                lengthOfArray(['a', ['b', 'c', 'd']]) ➞ 4
+                lengthOfArray(['a', ['b', ['c', ['d', 'e']]]]) ➞ 5
+                lengthOfArray(['a', ['b'], 'c', 'd']) ➞ 4
+                lengthOfArray(['a', ['b', 'c', 'd'], 'e']) ➞ 5
+            </pre>
+        </h3>
+        <script>
+            // Sol 1 : Using the flat() method of array. The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth. In our case we will define the depth as Infinity
+            const lengthOfArray = arr => arr.flat(Infinity).length;
+
+            console.log(lengthOfArray(['a', ['b', 'c', 'd']]));
+            console.log(lengthOfArray(['a', ['b', ['c', ['d', 'e']]]]));
+            console.log(lengthOfArray(['a', ['b'], 'c', 'd']));
+            console.log(lengthOfArray(['a', ['b', 'c', 'd'], 'e']));
+        </script>
+    </body>
+</html>
