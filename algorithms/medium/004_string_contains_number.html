@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>
+            004 String Contains Number
+        </title>
+    </head>
+    <body>
+        <h1>String Contains Number</h1>
+        <h3>
+            Create a function which takes a string as input and returns true if the string contains any number
+            <br>
+            Ex: 
+            <pre>
+                ifStringContainsNumber("ab4c") ➞ true
+                ifStringContainsNumber("qwty") ➞ false
+                ifStringContainsNumber("2") ➞ true
+                ifStringContainsNumber("abbb") ➞ false
+            </pre>
+        </h3>
+        <script>
+            // Sol
+            const ifStringContainsNumber = str => /\d/.test(str); // Regular expression to check if str contains a digit
+
+            console.log(ifStringContainsNumber("ab4c"));
+            console.log(ifStringContainsNumber("qwty"));
+            console.log(ifStringContainsNumber("2"));
+            console.log(ifStringContainsNumber("abbb"));
+        </script>
+    </body>
+</html>
