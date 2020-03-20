@@ -33,14 +33,19 @@
                 return arr;
             };
 
-            // Sol 2 : Using Object.entries
-            const convertObjToArr2 = obj => {
-                return Object.entries(obj); // Object.entries returns an array of arrays with key value pair. Note: Object.keys will return an array of keys and Object.values will return an array of values
-            }
+            // Sol 2 : Using Object.entries (Single line solution)
+            const convertObjToArr2 = obj => Object.entries(obj); // Object.entries returns an array of arrays with key value pair. Note: Object.keys will return an array of keys and Object.values will return an array of values
+
+            // Sol 3 : Using Object.keys (Single line solution)
+            const convertObjToArr3 = obj => Object.keys(obj).map(key => [key, obj[key]])
+
+            const inputObj = { apples: 5, oranges: 4, bananas: 10, watermelons: 6 };
             console.log('Sol 1: ---')
-            console.log(convertObjToArr({ apples: 5, oranges: 4, bananas: 10, watermelons: 6 }));
+            console.log(convertObjToArr(inputObj));
             console.log('Sol 2: ---')
-            console.log(convertObjToArr({ apples: 5, oranges: 4, bananas: 10, watermelons: 6 }));
+            console.log(convertObjToArr2(inputObj));
+            console.log('Sol 3: ---')
+            console.log(convertObjToArr3(inputObj));
         </script>
     </body>
 </html>
