@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>
+            003 Find Smallest Number in an Array
+        </title>
+    </head>
+    <body>
+        <h1>Find Smallest Number in an Array</h1>
+        <h3>
+            Create a function which takes an Array of numbers as input and returns the smallest number from array
+            <br>
+            Ex: 
+            <pre>
+                searchSmallestNumber([123, 345, 888, 4]) ➞ 4
+                searchSmallestNumber([-34, 55, -56, 434]) ➞ -56
+                searchSmallestNumber([0.234, 0.43, 0.76, 0.834]) ➞ 0.234
+            </pre>
+        </h3>
+        <script>
+            // Sol 1 (Single Line Sol)
+            // Use spread operator to gett all the items of array and then use Math.min to find the smallest number
+            const searchSmallestNumber = arr => Math.min(...arr);
+
+            // Sol 2 with sort
+            // sort array in ascending order. Default sort is for strings. Use a - b to sort numbers in ascending orders.
+            const searchSmallestNumber2 = arr => {
+                arr.sort((a, b) => a - b)
+                return arr[0];
+            };
+
+            // Sol 3 with for loop. Assume the first number of array to be smallest. Then start looping through array while comparing and if any item is less than the current smallest number, then that item becomes the new smallest number and return it finally
+            const searchSmallestNumber3 = arr => {
+                let smallest = arr[0];
+                for(let i in arr) {
+                    if(arr[i] < smallest) {
+                        smallest = arr[i]
+                    }
+                }
+                return smallest
+            };
+
+            console.log(searchSmallestNumber([123, 345, 888, 4]));
+            console.log(searchSmallestNumber2([-34, 55, -56, 434]));
+            console.log(searchSmallestNumber3([0.234, 0.43, 0.76, 0.834]));
+        </script>
+    </body>
+</html>
