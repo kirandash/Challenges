@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>
+            002 Convert Object To Array
+        </title>
+    </head>
+    <body>
+        <h1>Convert Object To Array</h1>
+        <h3>
+            Create a function which takes an object as input and converts it into an array of keys and values
+            <br>
+            Ex: 
+            <pre>
+                convertObjToArr({
+                    apples: 5,
+                    oranges: 4,
+                    bananas: 10,
+                    watermelons: 6
+                }) ➞ [["apples", 5], ["oranges", 4], ["bananas", 10], ["watermelons", 6]]
+            </pre>
+        </h3>
+        <script>
+            // Sol 1 : Using for in loop
+            const convertObjToArr = obj => {
+                const arr = [];
+                for(let prop in obj) {
+                    if(obj.hasOwnProperty(prop)) {
+                        if(prop) {
+                            arr.push([prop, obj[prop]])
+                        }
+                    }
+                }
+                return arr;
+            };
+
+            // Sol 2 : Using Object.entries
+            const convertObjToArr2 = obj => {
+                return Object.entries(obj); // Object.entries returns an array of arrays with key value pair. Note: Object.keys will return an array of keys and Object.values will return an array of values
+            }
+            console.log('Sol 1: ---')
+            console.log(convertObjToArr({ apples: 5, oranges: 4, bananas: 10, watermelons: 6 }));
+            console.log('Sol 2: ---')
+            console.log(convertObjToArr({ apples: 5, oranges: 4, bananas: 10, watermelons: 6 }));
+        </script>
+    </body>
+</html>
