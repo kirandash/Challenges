@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>
+            001 Remove Zeros
+        </title>
+    </head>
+    <body>
+        <h1>Remove Zeros</h1>
+        <h3>
+            Create a function which takes a number as a string and returns the number as a string without trailing and leading zeros.
+            <br>
+            Ex: '004.34000' -> '4.34' and '0054500' -> '54500'
+        </h3>
+        <script>
+            const removeZeros = num => ''+(+num);
+            console.log(removeZeros('004.34000')); // expected: '4.34'
+            console.log(removeZeros('0054500')); // expected: '54500'
+        </script>
+    </body>
+</html>
