@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>
+            001 Remove Last Vowels
+        </title>
+    </head>
+    <body>
+        <h1>Remove Last Vowels</h1>
+        <h3>
+            Create a function which will remove last vowels from every word in a sentence
+            <br>
+            Ex: 
+            <pre>
+                removeLastVowels("BG Web Agency is an awesome YouTube Channel!") ➞ "BG Wb Agncy s n awesom YouTub Channl!"
+            </pre>
+        </h3>
+        <script>
+            // removeLastVowels from each word. First split each word. Then for each word we can reverse the string and replace first vowel regular expression. since the regular expression replace always performs the replace only once until we mention the global parameter
+            const removeVowel = word => word.split('').reverse().join('').replace(/[aeiou]/, '').split('').reverse().join('');
+            const removeLastVowels = string => string.split(' ').map(word => removeVowel(word)).join(' ');
+
+            console.log(removeLastVowels("BG Web Agency is an awesome YouTube Channel!"));
+        </script>
+    </body>
+</html>
