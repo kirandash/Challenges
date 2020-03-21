@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>
+            002 How Many Days Between Two Dates
+        </title>
+    </head>
+    <body>
+        <h1>How Many Days Between Two Dates</h1>
+        <h3>
+            Create a function which will take two dates as input and returns the number of days between them
+            <br>
+            Ex: 
+            <pre>
+                findDays("January 10, 2020", "January 16, 2020") ➞ 6
+                findDays("December 29, 2020", "January 1, 2020") ➞ 3
+                findDays("March 1, 2020", "March 2, 2020") ➞ 1
+            </pre>
+        </h3>
+        <script>
+            // First convert the string dates to JS Date Object with new Date(), then we can use a simple substraction to get the difference b/w two dates. But that will be returned in milliseconds. Next we need to convert milliseconds into days (1000 * 60 * 60 * 24)
+            const findDays = (date1, date2) => (new Date(date2) - new Date(date1)) / (1000 * 60 * 60 * 24)
+
+            console.log(findDays("January 10, 2020", "January 16, 2020"));
+            console.log(findDays("December 29, 2019", "January 1, 2020"));
+            console.log(findDays("March 1, 2020", "March 2, 2020"));
+        </script>
+    </body>
+</html>
