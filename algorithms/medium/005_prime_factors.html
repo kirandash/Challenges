@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>
+            005 Find Prime Factors
+        </title>
+    </head>
+    <body>
+        <h1>Find Prime Factors of a number</h1>
+        <h3>
+            Create a function which takes a number as input and returns all of it's prime factors.
+            <br/>Read more about prime numbers and Prime factors at <a href="https://www.mathsisfun.com/prime-factorization.html" target="_blank">https://www.mathsisfun.com/prime-factorization.html</a>
+            <br/><br/>
+            Hint: A Prime Number is: a whole number greater than 1 that can not be made by multiplying other whole number.<br>
+            "Prime Factorization" is finding which prime numbers multiply together to make the original number.
+            <br/><br/>
+            Ex: 
+            <pre>
+                findPrimeFactors(12) ➞ [2, 2, 3]
+                findPrimeFactors(147) ➞ [3, 7, 7]
+                findPrimeFactors(17) ➞ [17]
+            </pre>
+        </h3>
+        <script>
+            // Sol: 1. To get the prime factors of a number. Start dividing the number with the smallest prime number i.e. 2. After the division, if remainder is 0 then that divisor is a prime factor and thus, push it to the output array of prime_factors and then divide the result of division with 2 again.
+            // 2. But if remainder is not 0, increase the divisor by 1. (To get to the next prime number)
+            // 3. Repeat the loop until divisor is equal to the number
+            const findPrimeFactors = num => {
+                prime_factors = []; // Array to hold all the prime factors
+                divisor = 2; // Start with smallest prime number
+                while(divisor <= num) {
+                    if(num % divisor === 0) {
+                        prime_factors.push(divisor);
+                        num = num / divisor;
+                    } else {
+                        divisor++; // Keep increasing to get to the next prime number
+                    }
+                }
+                return prime_factors; // will hold all prime numbers that multiply together to make the original number
+            }
+
+            console.log(findPrimeFactors(12));
+            console.log(findPrimeFactors(147));
+            console.log(findPrimeFactors(17));
+        </script>
+    </body>
+</html>
