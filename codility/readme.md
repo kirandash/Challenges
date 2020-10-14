@@ -34,3 +34,17 @@
 7. Real time application:
     - Circular buffers
     - Hashed rotation
+
+### 1.4 Counting Elements - Max Counter
+1. Problem: Max Counters
+2. Two instructions:
+    * increase(4) ---> increase 4th index by 1
+    * mac counter ---> set all values to max count
+3. inputs: array length (5), set of instructions in an array
+4. solution([3,4,4,6,1,4,4], 5): perform set of instructions on an array with 5 items and values 0.
+5. Write a fn: solution(n, a): n = size of counter or array, a = array with instructions
+    - Ans: [3,2,2,4,2]
+6. Can be solved with O(n + m)
+7. Solution steps:
+    * keep resetting the starting line based on count
+# unfinished

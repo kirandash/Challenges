@@ -1,0 +1,35 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            // Max Counter
+            const solution = (N, A) => {
+                // Start with counters set to 0
+                // start line at 0
+                // current max at 0
+                const counters = new Array(0) * N;
+                const start_line = 0;
+                const current_max = 0;
+                A.forEach((element, idx, array) => {
+                    const x = element - 1; // counter starts from 1 but idx from 0
+                    // If any value is > N set start line to the current_max
+                    if(element > N){ 
+                        start_line = current_max;
+                    }
+                    else if(counters[x] < start_line){
+                        counters[x] = start_line + 1;
+                    }
+                    else {
+                        counters[x] += 1;
+                    }
+                    if(element <= N && counters[x] > current_max) {
+                        current_max = counters[x]
+                    }
+                });
+                // Unfinished
+            }
+        </script>
+    </body>
+</html>
