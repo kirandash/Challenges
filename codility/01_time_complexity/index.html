@@ -1,0 +1,71 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            // Abs difference for equilibrium points
+            // Sol 1 - O(n * n) with two forEach loop
+
+            // Sol 2 - O(n * n) - with one forEach and reduce inside
+            const solution = (inputArr) => {
+            
+                const diffArr = [];
+                
+                // outer loop
+                inputArr.forEach((item, idx, array) => {
+                    if(idx === array.length - 1) return;
+
+                    // sum of left items
+                    const leftArr = array.slice(0, idx + 1);
+                    const leftSum = leftArr.reduce((acc, currVal) => acc + currVal);
+
+                    // sum of right items
+                    const rightArr = array.slice(idx + 1, array.length);
+                    const rightSum = rightArr.reduce((acc, currVal) => acc + currVal);
+
+                    // difference
+                    const diff = Math.abs(leftSum - rightSum);
+                    console.log(diff)
+
+                    // push to diff array
+                    diffArr.push(diff)
+                });
+
+                // Get minimum value out of the diff array
+                const minVal = Math.min.apply(Math, diffArr);
+                return {min: minVal, minIdx: diffArr.indexOf(minVal) + 1}
+            }
+
+            const inputArr = [3,1,2,4,3];
+            const result = solution(inputArr);
+            console.log('Minimum value: ', result.min);
+            console.log('index of equilibrium point is: ', result.minIdx)
+
+            // Sol 3: Performant with scale analogy - O(n)
+            // Looping through the array - and subtracting next array item from right side and adding it to left side
+            const solution2 = (inputArr2) => {
+                // Initial left and right sum
+                let sumLeft = inputArr2[0];
+                let sumRight = inputArr2.reduce((acc, currVal) => acc + currVal, 0) - inputArr2[0];
+                let diff = Math.abs(sumLeft - sumRight)
+
+                // loop
+                inputArr2.forEach((item, idx, array) => {
+                    // add new item to left
+                    sumLeft += array[idx];
+                    // remove new item from right
+                    sumRight -= array[idx];
+                    // new difference
+                    currDiff = Math.abs(sumLeft - sumRight);
+                    // if new diff is less than prev diff update prev diff
+                    if(currDiff < diff) diff = currDiff;
+                });
+                return diff;
+            }
+            const inputArr2 = [3,1,2,4,3];
+            const result2 = solution2(inputArr2);
+            console.log('Minimum value: ', result2);
+        </script>
+    </body>
+</html>
