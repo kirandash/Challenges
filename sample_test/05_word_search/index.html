@@ -1,0 +1,97 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <script>
+        // Word Search
+        const board = [
+            ['A', 'B', 'C', 'E'],
+            ['S', 'F', 'C', 'S'],
+            ['A', 'D', 'E', 'E']
+        ];
+
+        const isWordExisting = word => {
+            let result = false;
+
+            // Loop through the board rows and columns
+            for (i = 0; i < board.length; i++) {
+                for (j = 0; j < board[i].length; j++) {
+                    // check the first character - if found : run a recursive loop to check all next characters
+                    if (board[i][j] == word.charAt(0)) {
+                        // Mark this as starting point of check
+                        markPath(i, j);
+                        // call recursive fn to check next character
+                        if (findNext(i, j, 0, word)) {
+                            // Set result to true if the function find all characters
+                            result = true;
+                        } else {
+                            // Reset the board and then continue the next loop
+                            resetBoard();
+                        }
+                    }
+                }
+            }
+
+            return result;
+
+            function markPath(i, j) {
+                // mark starting point for search path
+                board[i][j] = board[i][j].toLowerCase();
+            }
+
+            // A recursive function
+            function findNext(i, j, step, word) {
+                // Return true for the final character
+                if (step === word.length - 1) {
+                    return true;
+                }
+
+                // Down
+                if (i < board.length - 1 && board[i + 1][j] === word[step + 1]) {
+                    markPath(i + 1, j);
+                    return findNext(i + 1, j, step + 1, word);
+                }
+                // Up
+                if (i > 0 && board[i - 1][j] === word[step + 1]) {
+                    markPath(i - 1, j);
+                    return findNext(i - 1, j, step + 1, word);
+                }
+                // Right
+                if (j < board[i].length - 1 && board[i][j + 1] === word[step + 1]) {
+                    markPath(i, j + 1);
+                    return findNext(i, j + 1, step + 1, word);
+                }
+                // Left
+                if (j > 0 && board[i][j - 1] === word[step + 1]) {
+                    markPath(i, j - 1);
+                    return findNext(i, j - 1, step + 1, word);
+                }
+
+                return false;
+            }
+            // Reset all characters to upper case
+            function resetBoard() {
+                for (var i = 0; i < board.length; i++) {
+                    for (var j = 0; j < board[i].length; j++) {
+                        board[i][j] = board[i][j].toUpperCase();
+                    }
+                }
+            }
+        }
+
+        // TEST
+        console.log('Q4');
+        console.log('isWordExisting(\'ABCCED\')', isWordExisting('ABCCED')); // true
+        console.log('isWordExisting(\'SEE\')', isWordExisting('SEE')); // true
+        console.log('isWordExisting(\'ABCB\')', isWordExisting('ABCB')); // false
+        // Additional:
+        console.log('Q4 extra');
+        console.log('isWordExisting(\'CESC\')', isWordExisting('CESC')); // true
+        console.log('isWordExisting(\'CESCC\')', isWordExisting('CESCC')); // false
+    </script>
+</body>
+
+</html>
